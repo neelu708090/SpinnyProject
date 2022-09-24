@@ -9,6 +9,8 @@ class Cuboid(models.Model):
     owner = models.ForeignKey('auth.User',related_name='cuboids',on_delete=models.CASCADE)
     created_by = models.CharField(max_length=25)
     last_updated = models.CharField(max_length=25)
+    area = models.IntegerField(default=1)
+    volume = models.IntegerField(default=1)
 
     def __str__(self):
         return self.created_by
