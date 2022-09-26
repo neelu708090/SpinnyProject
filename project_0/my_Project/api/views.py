@@ -206,7 +206,6 @@ class UserFilterCuboidList(FilterCuboidList,APIView):
         try:
             user = User.objects.filter(id=pk).first()
             if self.request.user == user:
-                print(self.request.user,user)
                 return super(UserFilterCuboidList,self).get(request,pk=pk)
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)

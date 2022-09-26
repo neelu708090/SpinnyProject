@@ -5,8 +5,8 @@ Do following steps to run this project.
 1. Create a Virtual Environment
 2. Install modules. Used modules are provided in requirement.txt file.
 3. Create super user in django.
-4. After creating super user if you want more users create users in admin/ url of django.
-5. Following urls are provided in urls of my_app.
+4. After creating super user if you want more users create users in admin/  url of django.
+5. Following urls are provided in urls of api.
 	1-'cuboids/' - 1)returns all cuboid instances., 2) create new cuboid if logged user is staff. 
     	2-'cuboids/<int:pk>/' - 1)returns cuboid instance with respect to cuboid id as pk., 2) user can delete cuboid instance if logged user is owner of cuboid.
     3-'users/' - 1)returns all users list. 
