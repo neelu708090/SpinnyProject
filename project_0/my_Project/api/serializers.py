@@ -1,3 +1,4 @@
+""" USE '__all__' in fields to view all instances of Cuboid"""
 from rest_framework import serializers
 from my_app.models import Cuboid
 from django.contrib.auth.models import User
@@ -21,6 +22,7 @@ class UpdateCuboidSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cuboid
         fields = ['length','breath','height','last_updated']
+        read_only_fields = ['created_by','owner']
 
 class UserCuboidSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source='owner.username')
