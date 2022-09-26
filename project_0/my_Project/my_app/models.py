@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
 # Create your models here.
 
 class Cuboid(models.Model):
@@ -11,6 +12,7 @@ class Cuboid(models.Model):
     last_updated = models.CharField(max_length=25)
     area = models.IntegerField(default=1)
     volume = models.IntegerField(default=1)
+    creation_date = models.DateField(default= datetime.date.today())
 
     def __str__(self):
         return self.created_by

@@ -29,4 +29,4 @@ class UserCuboidSerializer(serializers.ModelSerializer):
     last_updated = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Cuboid
-        fields = ['length','breath','height','area','volume','created_by','last_updated']
+        fields = ['length','breath','height','area','volume','created_by','last_updated','creation_date']
