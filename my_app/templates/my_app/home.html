@@ -17,9 +17,24 @@
                 <li>'user/int:pk/' - 1)return user with respect to their id.</li>
                 <li>'cuboid-update/int:pk/' - 1)update cuboid with respect to cuboid id.</li> 
                 <li>'user-profile/int:pk/' - 1)returns cuboid instance with respect to user id.</li>
-                <li>'user-filter/int:pk/' - 1)returns filterd cuboid of logged user. In this url we have to provide headers details regarding heades is provided in api/urls.</li> 
-                <li>'filter/' - 1)returns filtered cuboid from all cuboid instances. In this url we have to provide headers details regarding heades is provided in api/urls.</li>
+                <li>'user-filter/int:pk/' - 1)returns filterd cuboid of logged user. In this url we have to provide headers, details regarding headers is provided below</li> 
+                <li>'filter/' - 1)returns filtered cuboid from all cuboid instances. In this url we have to provide headers, details regarding headers is provided below</li>
             </ol>
+        </p>
+    </div>
+    <div>
+        <h3>Details Regarding Headers</h3>
+        <p>
+            We have to provide headers in user-filter and filter url. In headers we have to mention these three values
+            <ol>
+                <li> value = length or breath or height or area or volume </li>
+                <li> condition = {
+                    gt - for grater than or
+                    lt - for less than
+                    } </li>
+                <li> number = number you want to filter from </li>
+            </ol>
+            e.g. - value = length,condition = gt, number = 10  | This gives filtered objects in return
         </p>
     </div>
     
