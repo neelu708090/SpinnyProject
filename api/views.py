@@ -46,7 +46,7 @@ class CuboidList(APIView):
         length = data.get('length')
         breath = data.get('breath')
         height = data.get('height')
-        serializer.save(owner=self.request.user,area=cuboid_area(length,breath,height),volume=cuboid_volume(length,breath,height))
+        serializer.save(owner=self.request.user,last_updated=self.request.user.username,area=cuboid_area(length,breath,height),volume=cuboid_volume(length,breath,height))
 
 class CuboidDetail(APIView):
     """
@@ -95,18 +95,19 @@ class UpdateCuboid(APIView):
 
     def put(self, request, pk, format=None):
         cuboids = self.get_object(pk)
+        creator = cuboids.owner
         serializer = UpdateCuboidSerializer(cuboids, data=request.data,partial=True)
         if serializer.is_valid():
-            self.perform_create(serializer,request)
+            self.perform_create(serializer,request,creator)
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def perform_create(self,serializer,request):
+    def perform_create(self,serializer,request,creator):
         data = request.data
         length = data.get('length')
         breath = data.get('breath')
         height = data.get('height')
-        serializer.save(owner=self.request.user,area=cuboid_area(length,breath,height),volume=cuboid_volume(length,breath,height))
+        serializer.save(owner=creator,last_updated=self.request.user.username,area=cuboid_area(length,breath,height),volume=cuboid_volume(length,breath,height))
 
 class FilterCuboidList(APIView):
     def get_user_object(self,value,condit,num,pk):

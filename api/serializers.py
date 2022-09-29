@@ -5,11 +5,10 @@ from django.contrib.auth.models import User
 
 class CuboidSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
-    created_by = serializers.ReadOnlyField(source='owner.username')
-    last_updated = serializers.ReadOnlyField(source='owner.username')
+    last_updated = serializers.CharField(default='Not Updated')
     class Meta:
         model = Cuboid
-        fields = ['length','breath','height','created_by','owner','last_updated']
+        fields = ['length','breath','height','owner','last_updated']
 
 class UserSerializer(serializers.ModelSerializer):
     cuboids = serializers.PrimaryKeyRelatedField(many=True, queryset=Cuboid.objects.all())
@@ -18,11 +17,9 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class UpdateCuboidSerializer(serializers.ModelSerializer):
-    last_updated = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Cuboid
         fields = ['length','breath','height','last_updated']
-        read_only_fields = ['created_by','owner']
 
 class UserCuboidSerializer(serializers.ModelSerializer):
     created_by = serializers.ReadOnlyField(source='owner.username')
