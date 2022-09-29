@@ -117,29 +117,39 @@ class FilterCuboidList(APIView):
                 match value:
                     case 'length':
                         if condit == "gt":
-                            return Cuboid.objects.filter(length__gt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(length__gt = num,owner=user.pk)
                         else:
-                            return Cuboid.objects.filter(length__lt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(length__lt = num,owner=user.pk)
                     case 'breath':
                         if condit == "gt":
-                            return Cuboid.objects.filter(breath__gt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(breath__gt = num,owner=user.pk)
                         else:
-                            return Cuboid.objects.filter(breath__lt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(breath__lt = num,owner=user.pk)
                     case 'height':
                         if condit == "gt":
-                            return Cuboid.objects.filter(height__gt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(height__gt = num,owner=user.pk)
                         else:
-                            return Cuboid.objects.filter(height__lt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(height__lt = num,owner=user.pk)
                     case 'area':
                         if condit == "gt":
-                            return Cuboid.objects.filter(area__gt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(area__gt = num,owner=user.pk)
                         else:
-                            return Cuboid.objects.filter(area__lt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(area__lt = num,owner=user.pk)
                     case 'volume':
                         if condit == "gt":
-                            return Cuboid.objects.filter(volume__gt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(volume__gt = num,owner=user.pk)
                         else:
-                            return Cuboid.objects.filter(volume__lt = num,id=pk)
+                            user = User.objects.get(pk=pk)
+                            return Cuboid.objects.filter(volume__lt = num,owner=user.pk)
             except Cuboid.DoesNotExist:
                 raise Http404
         else:
